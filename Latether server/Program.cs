@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using System.Net;
 using System.Net.Sockets;
 
@@ -19,6 +19,6 @@ class main
         for (int i = 0; i < j; i++)        
             adata[i] = data[i];*/  
         string dat = Encoding.Default.GetString(data); 
-        Console.WriteLine(dat);                         
+        System.Diagnostics.Debug.WriteLine(dat);                         
     }
 }
