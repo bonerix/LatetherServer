@@ -2,7 +2,7 @@ using System;
 
 class test
 {
-    public void Main(string[] args)
+    static void Main(string[] args)
     {
         Console.WriteLine("test");
     }
