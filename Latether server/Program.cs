@@ -8,6 +8,7 @@ class main
 {
     static byte[] data;  
     static Socket socket;
+     
     static void Main(string[] args)
     {
         socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); 
@@ -15,6 +16,7 @@ class main
         socket.Listen(1);
         Socket accepteddata = socket.Accept();
         data = new byte[accepteddata.SendBufferSize];
+        int j = accepteddata.Receive(data);
         string dat = Encoding.Default.GetString(data);
         Console.WriteLine(dat);
     }
