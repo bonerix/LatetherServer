@@ -11,15 +11,14 @@ class main
     {
         socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); 
         socket.Bind(new IPEndPoint(IPAddress.Parse("192.168.1.61"), 6666)); 
-
-        socket.Listen(1);
-        Socket accepteddata = socket.Accept();
-        data = new byte[accepteddata.SendBufferSize]; 
-        int j = accepteddata.Receive(data);
-        /*byte[] adata = new byte[j];        
-        for (int i = 0; i < j; i++)        
-            adata[i] = data[i];*/  
-        string dat = Encoding.Default.GetString(data); 
-        Debug.WriteLine(dat);                         
+        
+        while (true)
+        {
+            socket.Listen(1);
+            Socket accepteddata = socket.Accept();
+            data = new byte[accepteddata.SendBufferSize];
+            string dat = Encoding.Default.GetString(data);
+            Console.WriteLine(dat);
+        }
     }
 }
