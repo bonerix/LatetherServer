@@ -19,6 +19,7 @@ class main
             socket.Listen(1);
             Socket accepteddata = socket.Accept();
             data = new byte[accepteddata.SendBufferSize];
+            int j = accepteddata.Receive(data);
             string dat = Encoding.Default.GetString(data);
             Console.WriteLine(dat);
         }
