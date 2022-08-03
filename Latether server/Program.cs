@@ -1,6 +1,7 @@
 using System.Text;
 using System.Net;
 using System.Net.Sockets;
+using System.Diagnostics;
 
 class main
 {
@@ -19,6 +20,6 @@ class main
         for (int i = 0; i < j; i++)        
             adata[i] = data[i];*/  
         string dat = Encoding.Default.GetString(data); 
-        System.Diagnostics.Debug.WriteLine(dat);                         
+        Debug.WriteLine(dat);                         
     }
 }
