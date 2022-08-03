@@ -12,12 +12,16 @@ class main
     static void Main(string[] args)
     {
         socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); 
-        socket.Bind(new IPEndPoint(IPAddress.Parse("192.168.1.61"), 6666)); 
-        socket.Listen(1);
-        Socket accepteddata = socket.Accept();
-        data = new byte[accepteddata.SendBufferSize];
-        int j = accepteddata.Receive(data);
-        string dat = Encoding.Default.GetString(data);
-        Console.WriteLine(dat);
+        socket.Bind(new IPEndPoint(IPAddress.Parse("192.168.1.61"), 42069));
+
+        while (true)
+        {
+            socket.Listen(1);
+            Socket accepteddata = socket.Accept();
+            data = new byte[accepteddata.SendBufferSize];
+            int j = accepteddata.Receive(data);
+            string dat = Encoding.Default.GetString(data);
+            Console.WriteLine(dat);
+        }
     }
 }
