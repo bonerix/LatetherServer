@@ -9,7 +9,7 @@ class main
     static void Main(string[] args)
     {
         socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); 
-        socket.Bind(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 6666)); 
+        socket.Bind(new IPEndPoint(IPAddress.Parse("192.168.1.61"), 6666)); 
 
         socket.Listen(1);
         Socket accepteddata = socket.Accept();
