@@ -19,7 +19,6 @@ class main
         for (int i = 0; i < j; i++)        
             adata[i] = data[i];*/  
         string dat = Encoding.Default.GetString(data); 
-        //System.Diagnostics.Debug.
-        Console.WriteLine(dat);                         
+        System.Diagnostics.Debug.WriteLine(dat);                         
     }
 }
