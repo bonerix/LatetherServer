@@ -13,7 +13,7 @@ class Server
 	static void Main(string[] args)
 	{
 		socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-		socket.Bind(new IPEndPoint(IPAddress.Parse("192.168.1.102"), PORT));
+		socket.Bind(new IPEndPoint(IPAddress.Parse("192.168.1.100"), PORT));
 
 		while (true)
 		{
