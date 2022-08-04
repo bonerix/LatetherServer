@@ -21,7 +21,7 @@ class Server
             accepteddata.Receive(data);
             string dat = Encoding.Default.GetString(data);
 
-            //Sending to users
+            /*//Sending to users
             IPAddress[] ips =
             {
                 IPAddress.Parse("192.168.1.98"),
@@ -42,7 +42,7 @@ class Server
                 {
 
                 }
-            }
+            }*/
         }
     }
 }
