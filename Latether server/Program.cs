@@ -5,13 +5,15 @@ using System.Net.Sockets;
 
 class Server
 {
+	const int PORT = 42069;
+
 	static byte[] data;
 	static Socket socket;
 
 	static void Main(string[] args)
 	{
 		socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-		socket.Bind(new IPEndPoint(IPAddress.Parse("192.168.1.100"), 42069));
+		socket.Bind(new IPEndPoint(IPAddress.Parse("192.168.1.102"), PORT));
 
 		while (true)
 		{
@@ -21,27 +23,29 @@ class Server
 			data = new byte[accepteddata.SendBufferSize];
 			accepteddata.Receive(data);
 			string dat = Encoding.Default.GetString(data);
+			Console.WriteLine(dat);
 
 			//Sending to users
-			IPAddress[] ips =
+			IPAddress[] IPs =
 			{
-				IPAddress.Parse("192.168.1.100"),
+				IPAddress.Parse("192.168.1.102"),
 				IPAddress.Parse("192.168.1.182"),
 				IPAddress.Parse("192.168.1.147")
 			};
 
-			foreach (IPAddress ip in ips)
+			/* this part is full of problems */
+			foreach (IPAddress IP in IPs)
 			{
 				try
 				{
 					Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-					s.Connect(ip, 42069);
+					s.Connect(IP, PORT);
 					s.Send(data);
 					s.Disconnect(false);
 				}
 				catch
 				{
-                    Console.WriteLine("Error: Client on ip {0} unavailable.", ip);
+                    Console.WriteLine("Error: Client on ip {0} unavailable.", IP);
 				}
 			}
 		}
