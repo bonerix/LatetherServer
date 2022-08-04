@@ -31,10 +31,17 @@ class Server
 
             foreach (IPAddress ip in ips)
             {
-                Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                s.Connect(ip, 42069);
-                s.Send(data);
-                s.Disconnect(false);
+                try
+                {
+                    Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                    s.Connect(ip, 42069);
+                    s.Send(data);
+                    s.Disconnect(false);
+                }
+                catch
+                {
+
+                }
             }
         }
     }
