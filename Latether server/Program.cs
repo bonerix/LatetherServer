@@ -33,7 +33,7 @@ class Server
 				IPAddress.Parse("192.168.1.147")
 			};
 
-			/* this part is full of problems */
+			//this part is full of problems
 			foreach (IPAddress IP in IPs)
 			{
 				try
