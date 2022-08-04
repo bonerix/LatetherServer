@@ -10,7 +10,7 @@ class Server
     static void Main(string[] args)
     {
         socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        socket.Bind(new IPEndPoint(IPAddress.Parse("192.168.1.98"), 42069));
+        socket.Bind(new IPEndPoint(IPAddress.Parse("192.168.1.61"), 42069));
 
         while (true)
         {
