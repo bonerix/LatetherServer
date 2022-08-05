@@ -6,14 +6,14 @@ using System.Net.Sockets;
 class Server
 {
 	const int PORT = 42069;
-
+    const string serverIP = "192.168.1.61";
 	static byte[] data;
 	static Socket socket;
 
 	static void Main(string[] args)
 	{
 		socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-		socket.Bind(new IPEndPoint(IPAddress.Parse("192.168.1.100"), PORT));
+		socket.Bind(new IPEndPoint(IPAddress.Parse(serverIP), PORT));
 
 		while (true)
 		{
