@@ -1,26 +1,29 @@
+using System;
 using System.Text;
 using System.Net;
 using System.Net.Sockets;
 
 class Server
 {
-    static byte[] data;
-    static Socket socket;
+	const int PORT = 42069;
 
-    static void Main(string[] args)
-    {
-        socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        socket.Bind(new IPEndPoint(IPAddress.Parse("192.168.1.98"), 42069));
+	static byte[] data;
+	static Socket socket;
 
-        while (true)
-        {
-            //Recieving from users
-            socket.Listen(1);
-            Socket accepteddata = socket.Accept();
-            data = new byte[accepteddata.SendBufferSize];
-            accepteddata.Receive(data);
-            string dat = Encoding.Default.GetString(data);
-            System.Console.WriteLine(dat);
+	static void Main(string[] args)
+	{
+		socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+		socket.Bind(new IPEndPoint(IPAddress.Parse("192.168.1.100"), PORT));
+
+		while (true)
+		{
+			//Recieving from users
+			socket.Listen(1);
+			Socket accepteddata = socket.Accept();
+			data = new byte[accepteddata.SendBufferSize];
+			accepteddata.Receive(data);
+			string dat = Encoding.Default.GetString(data);
+			Console.WriteLine(dat);
 
             //Sending to users
             /*IPAddress[] ips = 
